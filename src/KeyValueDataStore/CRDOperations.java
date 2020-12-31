@@ -40,6 +40,8 @@ public class CRDOperations {
 		try {
 			File file = new File(filePath);
 			if (file.exists()) {
+				if(file.length()>1024*1024*1024)
+					return "file size exceeded 1GB";
 				fileip = new FileInputStream(file);
 				objectip = new ObjectInputStream(fileip);
 				hm = (HashMap<String, Databean>) objectip.readObject();
