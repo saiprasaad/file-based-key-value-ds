@@ -118,7 +118,7 @@ public class CRDOperations {
 		}
 		return "";
 	}
-	public Boolean exists(String key)
+	public synchronized Boolean exists(String key)
 	{
 		Boolean existvar=false;
 		try {
@@ -140,6 +140,7 @@ public class CRDOperations {
 			}
 			if (existvar) {
 				Databean ds = hm.get(key);
+//				System.out.println(ds.getKey());
 				long now = new Date().getTime();
 				int ttlvalue=ds.getTtl();
 				long diff=(now - ds.getStarttime());
