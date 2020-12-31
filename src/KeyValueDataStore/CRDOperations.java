@@ -19,11 +19,15 @@ public class CRDOperations {
 	ObjectInputStream objectip;
 	FileOutputStream fileop;
 	ObjectOutputStream objectop;
-	public synchronized String createfn(String key,JSONObject value,int ttl)
+	public synchronized String create(String key,JSONObject value,int ttl)
 	{
 		if(exists(key))
 		{
 			return "key already exists";
+		}
+		else if(key.length()>32)
+		{
+			return "key size is greater than 32 chars";
 		}
 		else
 		{
@@ -84,7 +88,7 @@ public class CRDOperations {
 			} 
 			else
 			{
-				return "Key not found!";
+				return "Key not found";
 			}
 		} catch (Exception exception) {
 			return "Key not found";
@@ -114,7 +118,7 @@ public class CRDOperations {
 		}
 		else
 		{
-				return "Key Doesn't Exist";
+				return "Key not found";
 		}
 		return "";
 	}

@@ -56,12 +56,17 @@ public class Main {
 		json.put("name", "saiprasaad");
 		json.put("gender","male");
 		json.put("age", 20);
-		store.createfn("sai",json,-1); //creates a new entry with the given values in the file
+		System.out.println(store.create("sai",json,-1)); //creates a new entry with the given values in the file
 		json.clear();
 		json.put("name", "user");
 		json.put("gender","male");
 		json.put("age", 21);
-		store.createfn("user",json,2); //creates a new entry with the given values in the file
+		System.out.println(store.create("user",json,2)); //creates a new entry with the given values in the file
+		json.clear();
+		json.put("name", "anonymous");
+		json.put("gender","male");
+		json.put("age", 22);
+		System.out.println(store.create("abcdefghijklmnopqrstuvwxyzabcdefghijkl",json,2)); //key size is greather than 32 chars
 		System.out.println(store.read("user"));//reads the user key values
 		Thread.sleep(5000); //sleeps for 5 seconds
 		System.out.println(store.read("user"));//key not found as it gets deleted after specified ttl
