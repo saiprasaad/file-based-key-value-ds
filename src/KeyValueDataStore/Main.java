@@ -18,10 +18,13 @@ public class Main {
 		int ttlvalue;
 		System.out.println("If you want to specify Filepath give the location else give NA");
 		filepath=scan.nextLine();
+		String s=System.getProperty("user.dir");
+		System.out.println(s);
 		if(filepath.equals("NA"))
-		filepath="C:\\Java\\default\\data";
+		filepath=s+"\\data";
 		else
 		filepath=filepath+"\\data";
+
 		CRDOperations store=new CRDOperations(filepath);
 		JSONObject json = new JSONObject();
 //										**USER INPUT **
